@@ -13,7 +13,7 @@ describe('Bank Account', () => {
     const bankAccount = new BankAccount()
     bankAccount.deposit(500)
 
-    expect(bankAccount.balanceTracker).toEqual([500])
+    expect(bankAccount.balanceTracker).toEqual([0, 500])
   })
 
   it('Subtracts withdrawal amounts from the balance', () => {
@@ -23,4 +23,12 @@ describe('Bank Account', () => {
 
     expect(bankAccount.balance).toEqual(4500)
   }) 
+
+  it('Adds an updated balance to the Balance Tracker after each withdrawal', () => {
+    const bankAccount = new BankAccount()
+    bankAccount.deposit(500)
+    bankAccount.withdraw(400)
+
+    expect(bankAccount.balanceTracker).toEqual([0, 500, 100])
+  })
 })
