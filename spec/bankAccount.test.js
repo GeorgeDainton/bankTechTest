@@ -9,6 +9,13 @@ describe('Bank Account', () => {
     expect(bankAccount.balance).toEqual(500)
   })
 
+  it('Adds an updated balance to the Balance Tracker after each deposit', () => {
+    const bankAccount = new BankAccount()
+    bankAccount.deposit(500)
+
+    expect(bankAccount.balanceTracker).toEqual([500])
+  })
+
   it('Subtracts withdrawal amounts from the balance', () => {
     const bankAccount = new BankAccount()
     bankAccount.deposit(5000)
